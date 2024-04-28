@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Menu, Search, User } from 'react-feather';
+import { Link, Menu, Search, User } from 'react-feather';
 
 import { QUERIES } from '../../constants';
 
@@ -29,7 +29,19 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <Logo />
+        <DesktopActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </DesktopActionGroup>
+        <HeaderLogo />
+        <SubscribeWrapper>
+          <Button>Subscribe</Button>
+          <SubscribeLink href='/#'>Already a subscriber?</SubscribeLink>
+        </SubscribeWrapper>
       </MainHeader>
     </header>
   );
@@ -39,6 +51,10 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -65,6 +81,51 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: revert;
+
+    margin-top: 16px;
+    margin-bottom: 72px;
+  }
+`;
+
+const DesktopActionGroup = styled(ActionGroup)`
+  display: none;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: flex;
+  }
+`;
+
+const HeaderLogo = styled(Logo)`
+  @media ${QUERIES.tabletAndUp} {
+    font-size: 4rem;
+  }
+`;
+
+const SubscribeWrapper = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: revert;
+    position: relative;
+    justify-self: end;
+  }
+`;
+
+const SubscribeLink = styled.a`
+  position: absolute;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 14px;
+  font-style: italic;
+  text-decoration: underline;
+  text-align: center;
+  color: var(--color-gray-900);
 `;
 
 export default Header;
