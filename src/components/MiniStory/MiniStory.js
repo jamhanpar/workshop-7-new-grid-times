@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { QUERIES } from '../../constants';
 
 const MiniStory = ({ id, image, title }) => {
   return (
@@ -30,6 +31,18 @@ const Title = styled.h3`
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
   color: var(--color-gray-900);
+
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: revert;
+    -webkit-box-orient: revert;
+    -webkit-line-clamp: revert;
+    overflow: revert;
+  } */
 `;
 
 export default MiniStory;
