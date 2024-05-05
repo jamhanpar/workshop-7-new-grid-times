@@ -46,6 +46,18 @@ const ArticleTitle = styled.h3`
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: revert;
+    -webkit-box-orient: revert;
+    -webkit-line-clamp: revert;
+    overflow: revert;
+  }
 `;
 
 export default OpinionStory;
